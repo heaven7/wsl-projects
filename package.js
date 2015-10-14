@@ -13,7 +13,8 @@ Package.onUse(function(api) {
 
     api.use([
         'heaven7:wsl-core@0.0.1',
-        'heaven7:wsl-locations@0.0.1'
+        'heaven7:wsl-locations@0.0.1',
+        'heaven7:wsl-tasks@0.0.1'
     ], both);
 
     api.imply([

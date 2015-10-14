@@ -3,11 +3,14 @@
     <ul>
         {{#if projects}}
             {{#each projects}}
-                <li>{{> project}}</li>
+                <li>
+                    {{> project}}
+                    <p>{{> insertTaskForm id=_id}} </p>
+                </li>
             {{/each}}
         {{/if}}
     </ul>
-    {{#if $.Meteor.userId}}
+    {{#if loggedIn}}
         {{> insertProjectForm}}
     {{/if}}
 </template>
@@ -18,6 +21,9 @@
     {{else}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+        {{# if tasks}}
+            {{> tasksList id=_id collection="Projects"}}
+        {{/if}}
         <button class="editProject">Edit</button>
         <small><button class="deleteProject">Delete</button></small>
     {{/ if}}
