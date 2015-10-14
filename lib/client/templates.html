@@ -1,0 +1,42 @@
+<template name="projectsList">
+    <h3>Projects-List</h3>
+    <ul>
+        {{#if projects}}
+            {{#each projects}}
+                <li>{{> project}}</li>
+            {{/each}}
+        {{/if}}
+    </ul>
+    {{#if $.Meteor.userId}}
+        {{> insertProjectForm}}
+    {{/if}}
+</template>
+
+<template name="project">
+    {{# if selectedProject}}
+        {{> editProjectForm}}
+    {{else}}
+        <h4>{{title}}</h4>
+        <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+        <button class="editProject">Edit</button>
+        <small><button class="deleteProject">Delete</button></small>
+    {{/ if}}
+</template>
+
+<template name="insertProjectForm">
+    {{#autoForm collection="Projects" meteormethod="newProject" type="insert" id="insertProjectForm"}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description'}}
+        {{> locationInputField}}
+        <button id="submitProjectForm" type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+</template>
+
+<template name="editProjectForm">
+    {{#autoForm collection="Projects" doc=doc meteormethod="updateProject" type="method" id="editProjectForm"}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description'}}
+        <button id="submitUpdate" type="submit">Update</button>
+        <button id="cancelUpdate" type="submit">Cancel</button>
+    {{/autoForm}}
+</template>
