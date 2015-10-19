@@ -5,13 +5,12 @@
             {{#each projects}}
                 <li>
                     {{> project}}
-                    <p>{{> insertTaskForm id=_id}} </p>
                 </li>
             {{/each}}
         {{/if}}
     </ul>
     {{#if loggedIn}}
-        {{> insertProjectForm}}
+        {{> insertProjectForm doc=$.Meteor.userId docType="User" }}
     {{/if}}
 </template>
 
@@ -21,9 +20,9 @@
     {{else}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
-        {{# if tasks}}
-            {{> tasksList id=_id collection="Projects"}}
-        {{/if}}
+        <p>{{> insertTaskForm doc=_id docType="Projects"}} </p>
+         {{> tasksList doc=_id docType="Projects"}}
+
         <button class="editProject">Edit</button>
         <small><button class="deleteProject">Delete</button></small>
     {{/ if}}
@@ -34,6 +33,9 @@
         {{> afQuickField name='title'}}
         {{> afQuickField name='description'}}
         {{> locationInputField}}
+
+        {{> afQuickField name='doc' value=doc type='hidden'}}
+        {{> afQuickField name='docType' value=docType type='hidden'}}
         <button id="submitProjectForm" type="submit" class="btn btn-primary">Insert</button>
     {{/autoForm}}
 </template>
