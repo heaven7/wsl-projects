@@ -16,7 +16,7 @@
 
 <template name="project">
     {{# if selectedProject}}
-        {{> editProjectForm}}
+        {{> editProjectForm doc=this}}
     {{else}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
@@ -41,7 +41,7 @@
 </template>
 
 <template name="editProjectForm">
-    {{#autoForm collection="Projects" doc=doc meteormethod="updateProject" type="method" id="editProjectForm"}}
+    {{#autoForm collection="Projects" doc=doc meteormethod="updateProject" type="update" id="editProjectForm"}}
         {{> afQuickField name='title'}}
         {{> afQuickField name='description'}}
         <button id="submitUpdate" type="submit">Update</button>
