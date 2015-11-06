@@ -10,7 +10,7 @@
         {{/if}}
     </ul>
     {{#if loggedIn}}
-        {{> insertProjectForm doc=$.Meteor.userId docType="User" }}
+        {{> insertProjectForm doc=currentUser docType="User" }}
     {{/if}}
 </template>
 
@@ -20,8 +20,10 @@
     {{else}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
-        <p>{{> insertTaskForm doc=_id docType="Projects"}} </p>
-         {{> tasksList doc=_id docType="Projects"}}
+        {{> insertTaskCategoryForm doc=_id docType="Projects"}}
+        {{#if categoryExists}}
+            {{> taskCategoriesList doc=_id docType="Projects"}}
+        {{/if}}
 
         <button class="editProject">Edit</button>
         <small><button class="deleteProject">Delete</button></small>
