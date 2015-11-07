@@ -1,7 +1,7 @@
 Package.describe({
   name: 'heaven7:wsl-projects',
-  version: '0.0.1',
-  summary: 'Tasks package',
+  version: '0.0.2',
+  summary: 'Projects package',
   git: 'https://github.com/heaven7/wsl-projects.git',
   documentation: 'README.md'
 });
@@ -9,12 +9,12 @@ Package.describe({
 both = ['client','server'];
 
 Package.onUse(function(api) {
-    api.versionsFrom("METEOR@1.0.1");
+    api.versionsFrom('1.2');
 
     api.use([
-        'heaven7:wsl-core@0.0.1',
-        'heaven7:wsl-locations@0.0.1',
-        'heaven7:wsl-tasks@0.0.1'
+        'heaven7:wsl-core@0.0.2',
+        'heaven7:wsl-locations@0.0.2',
+        'heaven7:wsl-tasks@0.0.2'
     ], both);
 
     api.imply([
