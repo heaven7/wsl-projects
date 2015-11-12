@@ -1,20 +1,48 @@
 <template name="projectsList">
-    <h3>Projects-List</h3>
-    <ul>
+    <div class="ui grid container">
         {{#if projects}}
             {{#each projects}}
-                <li>
+                <div class="four wide column">
                     {{> project}}
-                </li>
+                </div>
             {{/each}}
         {{/if}}
-    </ul>
+    </div>
     {{#if loggedIn}}
         {{> insertProjectForm doc=currentUserId docType="User" }}
     {{/if}}
 </template>
 
 <template name="project">
+    <div class="ui top attached menu">
+        <div class="ui dropdown icon item">
+            <i class="wrench icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <i class="dropdown icon"></i>
+                    <span class="text">New</span>
+                    <div class="menu">
+                        <div class="item">Document</div>
+                        <div class="item">Image</div>
+                    </div>
+                </div>
+                <div class="item">
+                    Open...
+                </div>
+                <div class="item">
+                    Save...
+                </div>
+                <div class="item">Edit Permissions</div>
+                <div class="divider"></div>
+                <div class="header">
+                    Export
+                </div>
+                <div class="item">
+                    Share...
+                </div>
+            </div>
+        </div>
+    </div>
     <h4><a href="{{pathFor route='project.show'}}">{{title}}</a></h4>
     <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
 </template>
@@ -23,13 +51,29 @@
     {{# if selectedProject}}
         {{> editProjectForm doc=this}}
     {{else}}
+        <div class="ui top menu">
+            <div class="ui dropdown icon item">
+                <i class="wrench icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <a href="#">Add Members</a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="editProject">Edit Project</a>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="item">
+                        <a href="#" class="deleteProject">Delete Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
-        {{> insertTaskCategoryForm doc=_id docType="Projects"}}
         {{#if categoryExists}}
             {{> taskCategoriesList doc=_id docType="Projects"}}
         {{/if}}
-        <button class="editProject">Edit</button>
+
         <small><button class="deleteProject">Delete</button></small>
         {{> membershipButton collection='Projects' _id=_id }}
     {{/ if}}
