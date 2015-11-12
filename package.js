@@ -25,6 +25,7 @@ Package.onUse(function(api) {
 
     api.addFiles([
         'lib/both/projects.js',
+        'lib/both/routes.js',
         'lib/both/schemas.js'
     ], both);
 

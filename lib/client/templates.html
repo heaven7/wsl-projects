@@ -15,6 +15,11 @@
 </template>
 
 <template name="project">
+    <h4><a href="{{pathFor route='project.show'}}">{{title}}</a></h4>
+    <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+</template>
+
+<template name="projectPage">
     {{# if selectedProject}}
         {{> editProjectForm doc=this}}
     {{else}}
@@ -24,7 +29,6 @@
         {{#if categoryExists}}
             {{> taskCategoriesList doc=_id docType="Projects"}}
         {{/if}}
-
         <button class="editProject">Edit</button>
         <small><button class="deleteProject">Delete</button></small>
         {{> membershipButton collection='Projects' _id=_id }}
@@ -48,6 +52,6 @@
         {{> afQuickField name='title'}}
         {{> afQuickField name='description'}}
         <button id="submitUpdate" type="submit">Update</button>
-        <button id="cancelUpdate" type="submit">Cancel</button>
+        <button id="cancelUpdate">Cancel</button>
     {{/autoForm}}
 </template>
