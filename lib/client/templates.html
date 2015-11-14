@@ -19,19 +19,26 @@
 </template>
 
 <template name="projectPage">
-    {{> projectDropdownMenu}}
-    {{> insertTaskCategoryModal doc=_id docType="Projects"}}
-    {{> inviteMembersModal doc=_id docType="Projects"}}
     {{# if selectedProject}}
         {{> editProjectForm doc=this}}
     {{else}}
 
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+
+        {{# if addTaskCategory}}
+            {{> insertTaskCategoryForm doc=_id docType="Projects"}}
+        {{/if}}
+        {{# if inviteMembers}}
+            {{> inviteMembersForm doc=_id docType="Projects"}}
+        {{/if}}
+
         {{#if categoryExists}}
             {{> taskCategoriesList doc=_id docType="Projects"}}
         {{/if}}
-
+        <button class="inviteMembers">Invite Members</button>
+        <button class="addTaskCategory">Add Category</button>
+        <button class="editProject">Edit</button>
         <small><button class="deleteProject">Delete</button></small>
         {{> membershipButton collection='Projects' _id=_id }}
     {{/ if}}
@@ -56,25 +63,4 @@
         <button id="submitUpdate" type="submit">Update</button>
         <button id="cancelUpdate">Cancel</button>
     {{/autoForm}}
-</template>
-
-<template name="projectDropdownMenu">
-    <div class="ui dropdown right icon button">
-        <i class="wrench icon"></i>
-        <div class="menu">
-            <div class="item">
-                <a href="#" class="inviteMembers">Invite Members</a>
-            </div>
-            <div class="item">
-                <a href="#" class="addCategory">Add Category</a>
-            </div>
-            <div class="item">
-                <a href="#" class="editProject">Edit Project</a>
-            </div>
-            <div class="divider"></div>
-            <div class="item">
-                <a href="#" class="deleteProject">Delete Project</a>
-            </div>
-        </div>
-    </div>
 </template>
