@@ -15,6 +15,7 @@ Package.onUse(function(api) {
         'heaven7:wsl-core@0.0.2',
         'heaven7:wsl-locations@0.0.2',
         'heaven7:wsl-memberships@0.0.1',
+        'heaven7:wsl-settings@0.0.2',
         'heaven7:wsl-tasks@0.0.2'
     ], both);
 
@@ -36,9 +37,11 @@ Package.onUse(function(api) {
     ], 'server');
 
     api.addFiles([
-        'lib/client/templates.html',
+        'lib/client/projects.html',
+        'lib/client/projects.js',
+        'lib/client/settings.html',
+        'lib/client/settings.js',
         'lib/client/hooks.js',
-        'lib/client/templates.js',
         'lib/client/helpers.js'
     ], 'client');
 
