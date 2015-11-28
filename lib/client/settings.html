@@ -1,5 +1,11 @@
 <template name="projectSettings">
     [EmailNotifications]
+    {{#autoForm collection="Settings" doc=settings type="update" id="projectSettingsForm" autosave=true}}
+        {{> afQuickField name='public'}}
+        {{> afQuickField name='watchable'}}
+        {{> afQuickField name='commentable'}}
+        {{> afQuickField name='shareable'}}
+    {{/autoForm}}
 
     [Rights/Roles]
 </template>

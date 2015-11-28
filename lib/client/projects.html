@@ -23,7 +23,10 @@
 </template>
 
 <template name="projectPage">
-    {{# if selectedProject}}
+    {{# if showSettings}}
+        {{> projectSettings}}
+    {{/if }}
+    {{# if editProject}}
         {{> editProjectForm doc=this}}
     {{else}}
 
@@ -40,6 +43,7 @@
         {{#if categoryExists}}
             {{> taskCategoriesList doc=_id docType="Projects"}}
         {{/if}}
+        <button class="showSettings">Settings</button>
         <button class="inviteMembers">Invite Members</button>
         <button class="addTaskCategory">Add Category</button>
         <button class="editProject">Edit</button>
