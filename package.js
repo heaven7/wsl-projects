@@ -37,12 +37,13 @@ Package.onUse(function(api) {
     ], 'server');
 
     api.addFiles([
-        'lib/client/projects.html',
-        'lib/client/projects.js',
-        'lib/client/settings.html',
-        'lib/client/settings.js',
-        'lib/client/hooks.js',
-        'lib/client/helpers.js'
+        'lib/client/projects/templates.html',
+        'lib/client/projects/templates.js',
+        'lib/client/projects/hooks.js',
+        'lib/client/projects/helpers.js',
+        'lib/client/settings/templates.html',
+        'lib/client/settings/templates.js',
+        'lib/client/settings/hooks.js'
     ], 'client');
 
     api.export('Projects', both);

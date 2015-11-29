@@ -18,7 +18,7 @@
 </template>
 
 <template name="project">
-    <h4><a href="{{pathFor route='project.show'}}">{{title}}</a></h4>
+    <h4><a class="showProject" href="{{pathFor route='project.show'}}">{{title}}</a></h4>
     <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
 </template>
 
@@ -28,8 +28,9 @@
     {{/if }}
     {{# if editProject}}
         {{> editProjectForm doc=this}}
-    {{else}}
+    {{/if}}
 
+    {{# if showProject}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
 
