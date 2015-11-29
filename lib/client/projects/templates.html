@@ -30,15 +30,16 @@
         {{> editProjectForm doc=this}}
     {{/if}}
 
+    {{# if inviteMembers}}
+        {{> inviteMembersForm doc=_id docType="Projects"}}
+    {{/if}}
+
     {{# if showProject}}
         <h4>{{title}}</h4>
         <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
 
         {{# if addTaskCategory}}
             {{> insertTaskCategoryForm doc=_id docType="Projects"}}
-        {{/if}}
-        {{# if inviteMembers}}
-            {{> inviteMembersForm doc=_id docType="Projects"}}
         {{/if}}
 
         {{#if categoryExists}}

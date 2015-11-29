@@ -41,8 +41,6 @@ Package.onUse(function(api) {
         'lib/client/projects/templates.js',
         'lib/client/projects/hooks.js',
         'lib/client/projects/helpers.js',
-        'lib/client/settings/templates.html',
-        'lib/client/settings/templates.js',
         'lib/client/settings/hooks.js'
     ], 'client');
 
