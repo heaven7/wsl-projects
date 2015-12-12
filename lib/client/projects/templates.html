@@ -21,7 +21,7 @@
 </template>
 
 <template name="projectPage">
-    {{#if isOwner currentUserId this}}
+    {{#if isInRole 'admin' _id}}
         {{> projectDropdownMenu}}
     {{/if}}
     {{> insertTaskCategoryModal doc=_id docType="Projects"}}

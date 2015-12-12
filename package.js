@@ -16,7 +16,8 @@ Package.onUse(function(api) {
         'heaven7:wsl-locations@0.0.2',
         'heaven7:wsl-memberships@0.0.1',
         'heaven7:wsl-settings@0.0.2',
-        'heaven7:wsl-tasks@0.0.2'
+        'heaven7:wsl-tasks@0.0.2',
+        'heaven7:wsl-useraccounts@0.0.2'
     ], both);
 
     api.imply([
