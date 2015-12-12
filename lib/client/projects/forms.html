@@ -1,0 +1,19 @@
+<template name="addProjectForm">
+    {{#autoForm collection="Projects" type="insert" id="addProjectForm"}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description'}}
+        {{> afQuickField name='doc' type='hidden' value=doc}}
+        {{> afQuickField name='docType' type='hidden' value=docType}}
+        {{> formInsertActions id="submitAddProject"}}
+    {{/autoForm}}
+</template>
+
+<template name="editProjectForm">
+    {{#autoForm collection="Projects" doc=doc meteormethod="updateProject" type="update" id="editProjectForm"}}
+        {{> afQuickField name='title'}}
+        {{> afQuickField name='description'}}
+        {{> afQuickField name='doc' type='hidden' value=project.doc}}
+        {{> afQuickField name='docType' type='hidden' value=project.docType}}
+        {{> formUpdateActions id="submitUpdate"}}
+    {{/autoForm}}
+</template>

@@ -39,6 +39,8 @@ Package.onUse(function(api) {
     api.addFiles([
         'lib/client/projects/templates.html',
         'lib/client/projects/templates.js',
+        'lib/client/projects/forms.html',
+        'lib/client/projects/forms.js',
         'lib/client/projects/hooks.js',
         'lib/client/projects/helpers.js',
         'lib/client/settings/hooks.js'
