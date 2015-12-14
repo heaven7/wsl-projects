@@ -28,6 +28,7 @@
     {{> inviteMembersModal doc=_id docType="Projects"}}
     {{> showSettingsModal doc=_id docType="Projects"}}
 
+    {{> membershipButton collection='Projects' _id=_id }}
     <h4>{{title}}</h4>
     <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
     <a href="{{pathFor 'project.members'}}">
@@ -36,5 +37,4 @@
     {{#if categoryExists}}
         {{> taskCategoriesList doc=_id docType="Projects"}}
     {{/if}}
-    {{> membershipButton collection='Projects' _id=_id }}
 </template>
