@@ -3,11 +3,11 @@
 </template>
 
 <template name="projectsList">
-    {{> button_with_icon icon="browser" text="Add Project" class="small orange" id="addProject"}}
-    <div class="ui grid container">
+    {{> button_with_icon icon="browser" text=addProject class="small orange" id="addProject"}}
+    <div class="ui cards">
         {{#if projects}}
             {{#each projects}}
-                <div class="four wide column">
+                <div class="card link">
                     {{> project}}
                 </div>
             {{/each}}
@@ -16,24 +16,46 @@
 </template>
 
 <template name="project">
-    <h4><a class="showProject" href="{{pathFor route='project.show'}}">{{title}}</a></h4>
-    <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+    <div class="content">
+        <div class="header">
+            <a class="showProject" href="{{pathFor route='project.show'}}">{{title}}</a>
+        </div>
+        <div class="meta">
+            {{createdAt}}
+        </div>
+        <div class="description">
+            {{description}}
+        </div>
+        <div class="extra content">
+            <span class="right floated">
+                {{> membershipButton collection='Projects' _id=_id }}
+            </span>
+            <span>
+                <a href="{{pathFor 'project.members'}}">
+                    <i class="user icon"></i>{{_ "members_count"}} {{membershipsCount _id}}
+                </a>
+            </span>
+        </div>
+    </div>
 </template>
 
 <template name="projectPage">
-    {{#if isInRole 'admin' _id}}
-        {{> projectDropdownMenu}}
-    {{/if}}
-    {{> insertTaskCategoryModal doc=_id docType="Projects"}}
-    {{> inviteMembersModal doc=_id docType="Projects"}}
-    {{> showSettingsModal doc=_id docType="Projects"}}
+    <div class="content">
+        {{#if isInRole 'admin' _id}}
+            {{> projectDropdownMenu}}
+        {{/if}}
+        {{> insertTaskCategoryModal doc=_id docType="Projects"}}
+        {{> inviteMembersModal doc=_id docType="Projects"}}
+        {{> showSettingsModal doc=_id docType="Projects"}}
 
-    {{> membershipButton collection='Projects' _id=_id }}
-    <h4>{{title}}</h4>
-    <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
-    <a href="{{pathFor 'project.members'}}">
-        <i class="users icon"></i>{{_ "members_count"}} {{membershipsCount _id}}
-    </a>
+        {{> membershipButton collection='Projects' _id=_id }}
+        <h2 class="ui header">{{title}}</h2>
+        <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+        <a href="{{pathFor 'project.members'}}">
+            <i class="users icon"></i>{{_ "members_count"}} {{membershipsCount _id}}
+        </a>
+        {{> avatar_small user=owner}}
+    </div>
     {{#if categoryExists}}
         {{> taskCategoriesList doc=_id docType="Projects"}}
     {{/if}}
