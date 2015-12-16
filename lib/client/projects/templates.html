@@ -3,13 +3,15 @@
 </template>
 
 <template name="projectsList">
+    {{> h2_with_icon icon="certificate yellow" text=projectsText}}
     {{> button_with_icon icon="browser" text=addProject class="small orange" id="addProject"}}
-    <hr>
+    {{> divider_with_icon icon="certificate yellow" text=projectsText}}
     {{> cards collection=projects id="projects" template="project"}}
 </template>
 
 <template name="project">
     {{> card
+        image=image
         meta=createdAt
         description=description
         header="project_header"
@@ -31,7 +33,7 @@
 
 <template name="project_extra_content2">
     <a href="{{pathFor 'project.members'}}">
-        {{> icon icon="user"}} {{_ "members_count"}} {{membershipsCount _id}}
+        {{> icon icon="user"}} {{membershipsCount _id}}
     </a>
 </template>
 
@@ -45,8 +47,15 @@
         {{> showSettingsModal doc=_id docType="Projects"}}
 
         {{> membershipButton collection='Projects' _id=_id }}
+
+        {{#if image}}
+            {{#with getDoc image 'Images'}}
+                {{> image_thumb url=url store="card" style="centered circular bordered" size="medium"}}
+            {{/with}}
+        {{/if}}
         <h2 class="ui header">{{title}}</h2>
-        <p>{{description}}<span><small> - {{createdAt}}</small></span></p>
+        <small>{{createdAt}}</small>
+        <p>{{description}}</p>
         <a href="{{pathFor 'project.members'}}">
             <i class="users icon"></i>{{_ "members_count"}} {{membershipsCount _id}}
         </a>
