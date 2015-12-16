@@ -4,39 +4,35 @@
 
 <template name="projectsList">
     {{> button_with_icon icon="browser" text=addProject class="small orange" id="addProject"}}
-    <div class="ui cards">
-        {{#if projects}}
-            {{#each projects}}
-                <div class="card link">
-                    {{> project}}
-                </div>
-            {{/each}}
-        {{/if}}
-    </div>
+    <hr>
+    {{> cards collection=projects id="projects" template="project"}}
 </template>
 
 <template name="project">
-    <div class="content">
-        <div class="header">
-            <a class="showProject" href="{{pathFor route='project.show'}}">{{title}}</a>
-        </div>
-        <div class="meta">
-            {{createdAt}}
-        </div>
-        <div class="description">
-            {{description}}
-        </div>
-        <div class="extra content">
-            <span class="right floated">
-                {{> membershipButton collection='Projects' _id=_id }}
-            </span>
-            <span>
-                <a href="{{pathFor 'project.members'}}">
-                    <i class="user icon"></i>{{_ "members_count"}} {{membershipsCount _id}}
-                </a>
-            </span>
-        </div>
-    </div>
+    {{> card
+        meta=createdAt
+        description=description
+        header="project_header"
+        title=title
+        route="project.show"
+        extra_content1="project_extra_content1"
+        extra_content2="project_extra_content2"
+        _id=_id
+    }}
+</template>
+
+<template name="project_header">
+    <a class="showProject" href="{{pathFor route='project.show'}}">{{title}}</a>
+</template>
+
+<template name="project_extra_content1">
+    {{> membershipButton collection='Projects' _id=_id }}
+</template>
+
+<template name="project_extra_content2">
+    <a href="{{pathFor 'project.members'}}">
+        {{> icon icon="user"}} {{_ "members_count"}} {{membershipsCount _id}}
+    </a>
 </template>
 
 <template name="projectPage">
