@@ -9,6 +9,7 @@ Package.describe({
 var both = ['client','server'],
     packages = [
         'heaven7:wsl-core@0.0.2',
+        'heaven7:wsl-i18n@0.0.2',
         'heaven7:wsl-permissions@0.0.1',
         'heaven7:wsl-locations@0.0.2',
         'heaven7:wsl-memberships@0.0.1',
