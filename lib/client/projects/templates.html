@@ -7,6 +7,7 @@
     {{> button_with_icon icon="browser" text=addProject class="small orange" id="addProject"}}
     {{> divider_with_icon icon="certificate yellow" text=projectsText}}
     {{> cards collection=projects id="projects" template="project"}}
+    {{> showModal template="addProjectForm" id="addProjectModal" header=addProjectModalHeader}}
 </template>
 
 <template name="project">
@@ -39,12 +40,11 @@
 
 <template name="projectPage">
     <div class="content">
-        {{#if isInRole 'admin' _id}}
-            {{> projectDropdownMenu}}
+        {{#if isInRole 'project-admin, role_taskCategories, role_tasks, role_settings' _id}}
+            {{> dropdownMenuWithRoles class="right icon button" icon="wrench" items=dropdownItems group=_id}}
+            {{> showModal template="editProjectForm" id="editProjectModal" header=editProjectModalHeader data=this }}
+            {{> projectModals data=this}}
         {{/if}}
-        {{> insertTaskCategoryModal doc=_id docType="Projects"}}
-        {{> inviteMembersModal doc=_id docType="Projects"}}
-        {{> showSettingsModal doc=_id docType="Projects"}}
 
         {{> membershipButton collection='Projects' _id=_id }}
 
@@ -64,4 +64,10 @@
     {{#if categoryExists}}
         {{> taskCategoriesList doc=_id docType="Projects"}}
     {{/if}}
+</template>
+
+<template name="projectModals">
+    {{> showModal template="inviteMembersWithRolesForm" id="inviteMembersModal" header=inviteMemberModalHeader data=this }}
+    {{> showModal template="insertTaskCategoryForm" id="insertTaskCategoryModal" header=addCategoryModalHeader data=this }}
+    {{> showModal template="settingsForm" id="showSettingsModal" header=showSettingsModalHeader data=this }}
 </template>

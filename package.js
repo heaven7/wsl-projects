@@ -6,24 +6,20 @@ Package.describe({
   documentation: 'README.md'
 });
 
-both = ['client','server'];
-
-Package.onUse(function(api) {
-    api.versionsFrom('1.2');
-
-    api.use([
+var both = ['client','server'],
+    packages = [
         'heaven7:wsl-core@0.0.2',
+        'heaven7:wsl-permissions@0.0.1',
         'heaven7:wsl-locations@0.0.2',
         'heaven7:wsl-memberships@0.0.1',
         'heaven7:wsl-settings@0.0.2',
         'heaven7:wsl-tasks@0.0.2',
         'heaven7:wsl-useraccounts@0.0.2'
-    ], both);
-
-    api.imply([
-        'heaven7:wsl-core',
-        'heaven7:wsl-locations'
-    ]);
+    ];
+Package.onUse(function(api) {
+    api.versionsFrom('1.2');
+    api.use(packages, both);
+    api.imply(packages);
 
     api.addFiles([
         'lib/both/projects.js',
@@ -38,13 +34,15 @@ Package.onUse(function(api) {
     ], 'server');
 
     api.addFiles([
-        'lib/client/projects/templates.html',
-        'lib/client/projects/templates.js',
         'lib/client/projects/forms.html',
         'lib/client/projects/forms.js',
+        'lib/client/projects/templates.html',
+        'lib/client/projects/templates.js',
         'lib/client/projects/hooks.js',
         'lib/client/projects/helpers.js',
-        'lib/client/settings/hooks.js'
+        'lib/client/settings/hooks.js',
+        'lib/client/members/templates.html',
+        'lib/client/members/templates.js'
     ], 'client');
 
     api.export('Projects', both);
