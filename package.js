@@ -13,7 +13,7 @@ var both = ['client','server'],
         'heaven7:wsl-permissions@0.0.1',
         'heaven7:wsl-locations@0.0.2',
         'heaven7:wsl-files@0.0.3',
-        'heaven7:wsl-memberships@0.0.3',
+        'heaven7:wsl-memberships@0.0.3_1',
         'heaven7:wsl-settings@0.0.3',
         'heaven7:wsl-tasks@0.0.3'
     ];
