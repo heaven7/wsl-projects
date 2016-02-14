@@ -1,6 +1,6 @@
 Package.describe({
   name: 'heaven7:wsl-projects',
-  version: '0.0.3_3',
+  version: '0.0.3_4',
   summary: 'Projects package',
   git: 'https://github.com/heaven7/wsl-projects.git',
   documentation: 'README.md'
@@ -11,11 +11,11 @@ var both = ['client','server'],
         'heaven7:wsl-core@0.0.3_1',
         'heaven7:wsl-i18n@0.0.3',
         'heaven7:wsl-permissions@0.0.2',
-        'heaven7:wsl-locations@0.0.2',
+        'heaven7:wsl-locations@0.0.3_2',
         'heaven7:wsl-files@0.0.3',
         'heaven7:wsl-memberships@0.0.3_1',
         'heaven7:wsl-settings@0.0.3',
-        'heaven7:wsl-tasks@0.0.3_1'
+        'heaven7:wsl-tasks@0.0.3_2'
     ];
 Package.onUse(function(api) {
     api.versionsFrom('1.2');

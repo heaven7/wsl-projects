@@ -2,7 +2,7 @@
     {{#autoForm collection="Projects" type="insert" id="addProjectForm"}}
         {{> afQuickField name='images'}}
         {{> afQuickField name='title'}}
-        {{> afQuickField name='description' rows=4}}
+        {{> afQuickField name='description' rows=4 class="wysiwyg"}}
         {{> afQuickField name='dragonproject'}}
         {{> afQuickField name='doc' type='hidden' value=doc}}
         {{> afQuickField name='docType' type='hidden' value=docType}}
@@ -14,7 +14,7 @@
     {{#autoForm collection="Projects" doc=doc meteormethod="updateProject" type="update" id="editProjectForm"}}
         {{> afQuickField name='images'}}
         {{> afQuickField name='title'}}
-        {{> afQuickField name='description' rows=4}}
+        {{> afQuickField name='description' rows=4 class="wysiwyg" }}
         {{> formUpdateActions id="submitUpdate"}}
     {{/autoForm}}
 </template>
