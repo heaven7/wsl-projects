@@ -16,6 +16,7 @@ var both = ['client','server'],
         'heaven7:wsl-memberships@0.0.3_2',
         'heaven7:wsl-settings@0.0.3_1',
         'heaven7:wsl-tasks@0.0.3_3',
+        'heaven7:wsl-wysiwyg@0.0.2',
         'ecmascript',
         'es5-shim'
     ];
